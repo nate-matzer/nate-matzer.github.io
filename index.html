@@ -29,7 +29,7 @@ import * as THREE from './three.module.js';
 import {VRButton} from './VRButton.js';
 
 function main() {
-    document.title = "Dimension: " + location.hostname;
+    document.title = "Dim: " + location.hostname;
   const canvas = document.querySelector('#c');
   const renderer = new THREE.WebGLRenderer({canvas});
   renderer.xr.enabled = true;
@@ -44,13 +44,22 @@ function main() {
 
   const scene = new THREE.Scene();
 
-  {
+//   {
+//     const color = 0xFFFFFF;
+//     const intensity = 1;
+//     const light = new THREE.DirectionalLight(color, intensity);
+//     light.position.set(-1, 2, 4);
+//     scene.add(light);
+//   }
+//   {
     const color = 0xFFFFFF;
-    const intensity = 1;
-    const light = new THREE.DirectionalLight(color, intensity);
-    light.position.set(-1, 2, 4);
+    const intensity = 2;
+    const light = new THREE.PointLight(color, intensity);
+    light.position.x = camera.position.x;
+    light.position.y = camera.position.y;
+    light.position.z = camera.position.z;
     scene.add(light);
-  }
+//   }
 
   const boxWidth = 1;
   const boxHeight = 1;
@@ -102,6 +111,9 @@ function main() {
       cube.rotation.x = rot;
       cube.rotation.y = rot;
     });
+    light.position.x = camera.position.x;
+    light.position.y = camera.position.y;
+    light.position.z = camera.position.z;
 
     renderer.render(scene, camera);
   }
