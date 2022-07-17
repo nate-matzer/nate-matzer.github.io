@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Three.js - WebXR - Basic</title>
+    <title>Unknown Dimension</title>
     <style>
     html, body {
         height: 100%;
@@ -29,6 +29,7 @@ import * as THREE from './three.module.js';
 import {VRButton} from './VRButton.js';
 
 function main() {
+    document.title = "Dimension: " + location.hostname;
   const canvas = document.querySelector('#c');
   const renderer = new THREE.WebGLRenderer({canvas});
   renderer.xr.enabled = true;
