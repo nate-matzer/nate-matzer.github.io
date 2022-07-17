@@ -44,14 +44,6 @@ function main() {
 
   const scene = new THREE.Scene();
 
-//   {
-//     const color = 0xFFFFFF;
-//     const intensity = 1;
-//     const light = new THREE.DirectionalLight(color, intensity);
-//     light.position.set(-1, 2, 4);
-//     scene.add(light);
-//   }
-//   {
     const color = 0xFFFFFF;
     const intensity = 2;
     const light = new THREE.PointLight(color, intensity);
@@ -59,7 +51,6 @@ function main() {
     light.position.y = camera.position.y;
     light.position.z = camera.position.z;
     scene.add(light);
-//   }
 
   const boxWidth = 1;
   const boxHeight = 1;
