@@ -2,7 +2,6 @@
     <head>
         <script type="module">
             import * as THREE from './three.module.js';
-            var cube;
 
             function main() {
                 const canvas = document.querySelector('#root-canvas');
@@ -23,7 +22,7 @@
 
                 const material = new THREE.MeshBasicMaterial({color: 0x44aa88});
 
-                cube = new THREE.Mesh(geometry, material);
+                const cube = new THREE.Mesh(geometry, material);
                 scene.add(cube);
                 renderer.render(scene, camera);
             }
@@ -38,6 +37,7 @@
  
                 requestAnimationFrame(render);
             }
+            main();
             requestAnimationFrame(render);
         </script>
     </head>
