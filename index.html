@@ -63,6 +63,7 @@ function main() {
   renderer.xr.enabled = true;
   document.body.appendChild(VRButton.createButton(renderer));
 
+
   const fov = 75;
   const aspect = 2;  // the canvas default
   const near = 0.1;
@@ -71,9 +72,25 @@ function main() {
   camera.position.set(0, 1.6, 0);
 
   const scene = new THREE.Scene();
-  const pickHelper = new PickHelper();
+//  const pickHelper = new PickHelper();
 
-    const color = 0xFFFFFF;
+    const geoSphere = new THREE.SphereGeometry(.1, 32, 16);
+  const matSphere = new THREE.MeshBasicMaterial({color:0xff0000});
+  const controllers = [];
+  var controller;
+  var i = 0;
+  do {
+    controller = renderer.xr.getController(i);
+    if (controller) {
+        scene.add(controller);
+        const sphere = new THREE.Mesh(geoSphere, matSphere);
+        controller.add(sphere);
+        //controllers.push()
+    }
+    i++;
+  } while (i < 2);
+
+  const color = 0xFFFFFF;
     const intensity = 2;
     const light = new THREE.PointLight(color, intensity);
     light.position.x = camera.position.x;
@@ -131,12 +148,13 @@ function main() {
       cube.rotation.x = rot;
       cube.rotation.y = rot;
     });
+
     light.position.x = camera.position.x;
     light.position.y = camera.position.y;
     light.position.z = camera.position.z;
 
     // 0, 0 is the center of the view in normalized coordinates.
-    pickHelper.pick({x: 0, y: 0}, scene, camera, time);
+    //pickHelper.pick({x: 0, y: 0}, scene, camera, time);
 
     renderer.render(scene, camera);
   }
