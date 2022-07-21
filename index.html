@@ -74,6 +74,12 @@ function main() {
   const scene = new THREE.Scene();
 //  const pickHelper = new PickHelper();
 
+const geoFloor = new THREE.BoxGeometry(5, 0.01, 5);
+const matFloor = new THREE.MeshPhongMaterial({color:0x999999});
+const floor = new THREE.Mesh(geoFloor, matFloor);
+    floor.position.y = -0.005;
+    scene.add(floor);
+
     const geoSphere = new THREE.SphereGeometry(.1, 32, 16);
   const matSphere = new THREE.MeshBasicMaterial({color:0xff0000});
   const controllers = [];
